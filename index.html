@@ -7,152 +7,69 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-        body { 
-            font-family: 'Vazirmatn', sans-serif; 
-            background-color: #f4f4f5; /* رنگ پس‌زمینه دقیقاً مشابه سایت ارسالی */
-        }
-        /* کلاس‌های کمکی برای آیکون‌های SVG */
-        .icon-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 9999px;
-            flex-shrink: 0;
-        }
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f4f4f5; }
     </style>
 </head>
-<body class="p-4 md:p-8 flex items-start justify-center min-h-screen">
+<body class="p-4 md:p-8">
     
-    <div id="app" class="w-full max-w-4xl mx-auto space-y-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                H
+        <!-- ستون سمت چپ: ۳ کارت مجزا -->
+        <div class="md:col-span-1 space-y-4">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <p class="text-sm text-gray-500 mb-1">حجم کل</p>
+                <h2 class="text-3xl font-bold" id="totalTraffic">4.74 GB</h2>
             </div>
-            <div>
-                <h1 class="text-xl font-bold text-gray-900">HexaPing</h1>
-                <p class="text-xs text-gray-500">پنل کاربری اشتراک شما</p>
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <p class="text-sm text-gray-500 mb-1">تاریخ انقضا</p>
+                <h2 class="text-xl font-bold" id="expireDate">1405/04/20, 17:03</h2>
             </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div class="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x lg:divide-x-reverse divide-gray-100">
-                
-                <div class="p-4 flex items-center gap-4">
-                    <div class="icon-wrapper bg-blue-50 text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500 mb-1">وضعیت</span>
-                        <span class="font-bold text-sm text-gray-900 flex items-center gap-1.5" id="statusBox">
-                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                            فعال
-                        </span>
-                    </div>
-                </div>
-
-                <div class="p-4 flex items-center gap-4 border-r lg:border-none border-gray-100">
-                    <div class="icon-wrapper bg-green-50 text-green-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500 mb-1">مصرف شده</span>
-                        <span class="font-bold text-sm text-gray-900" id="usedBox" dir="ltr">...</span>
-                    </div>
-                </div>
-
-                <div class="p-4 flex items-center gap-4">
-                    <div class="icon-wrapper bg-orange-50 text-orange-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500 mb-1">زمان باقی‌مانده</span>
-                        <span class="font-bold text-sm text-gray-900" id="expireBox">...</span>
-                    </div>
-                </div>
-
-                <div class="p-4 flex items-center gap-4 border-r lg:border-none border-gray-100">
-                    <div class="icon-wrapper bg-purple-50 text-purple-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500 mb-1">نام کاربر</span>
-                        <span class="font-bold text-sm text-gray-900" id="userNameBox">...</span>
-                    </div>
-                </div>
-
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <p class="text-sm text-gray-500 mb-1">آخرین اتصال</p>
+                <h2 class="text-xl font-bold" id="lastConnection">1405/03/27, 00:17</h2>
             </div>
         </div>
 
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mt-6">
-            <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                لینک‌های اتصال
-            </h3>
-            <div id="linksContainer" class="flex flex-col gap-3">
+        <!-- ستون سمت راست: باکس بزرگ -->
+        <div class="md:col-span-2 bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-gray-500 mb-1">منقضی می‌شود در</p>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-8">24 روز</h1>
+                    
+                    <div class="space-y-3 text-gray-700">
+                        <div class="flex justify-between w-64"><span>حجم سرویس</span> <span class="font-bold">10.00 GB</span></div>
+                        <div class="flex justify-between w-64"><span>حجم مصرفی</span> <span class="font-bold">4.74 GB</span></div>
+                        <div class="flex justify-between w-64 text-green-600 font-bold"><span>حجم باقی مانده</span> <span>5.26 GB</span></div>
+                    </div>
                 </div>
+
+                <!-- نمودار دایره‌ای (با SVG ساده) -->
+                <div class="relative w-32 h-32">
+                    <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                        <path class="text-gray-100" stroke-width="3" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="text-green-500" stroke-width="3" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span class="text-2xl font-bold">47%</span>
+                        <span class="text-[10px] text-gray-500">مصرف شده</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex items-center gap-2 text-green-600 font-bold bg-green-50 p-3 rounded-lg w-fit">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                فعال
+            </div>
         </div>
     </div>
 
+    <!-- جای لینک‌ها که بعدا اضافه می‌کنیم -->
+    <div id="linksContainer" class="max-w-4xl mx-auto mt-6"></div>
+
     <script>
-        // دیتای تستی
-        const mockData = {
-            user: {
-                username: "Amin_VIP",
-                status: "active",
-                data_limit: 50 * 1073741824, 
-                used_traffic: 12.4 * 1073741824, 
-                expire: Math.floor(Date.now() / 1000) + (25 * 86400) 
-            },
-            links: [
-                { name: "لینک هوشمند سابسکریپشن", link: "https://sub.hexaping.com/api/v1/sub/test" },
-                { name: "VLESS - همراه اول", link: "vless://fake-link-test-1" },
-                { name: "VMESS - ایرانسل", link: "vmess://fake-link-test-2" }
-            ]
-        };
-
-        function formatBytes(bytes) {
-            if (bytes === 0) return '0 B';
-            const k = 1024;
-            const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function getDaysLeft(timestamp) {
-            if (!timestamp) return "نامحدود";
-            const diff = timestamp - Math.floor(Date.now() / 1000);
-            if (diff <= 0) return "منقضی شده";
-            return Math.floor(diff / 86400) + " روز";
-        }
-
-        // تزریق اطلاعات به کادرها
-        document.getElementById('userNameBox').innerText = mockData.user.username;
-        document.getElementById('usedBox').innerText = formatBytes(mockData.user.used_traffic);
-        document.getElementById('expireBox').innerText = getDaysLeft(mockData.user.expire);
-        
-        const statusElem = document.getElementById('statusBox');
-        if(mockData.user.status !== "active") {
-            statusElem.innerHTML = '<span class="w-2 h-2 rounded-full bg-red-500"></span>غیرفعال';
-            statusElem.className = "font-bold text-sm text-gray-900 flex items-center gap-1.5";
-            statusElem.parentElement.parentElement.querySelector('.icon-wrapper').className = "icon-wrapper bg-red-50 text-red-600";
-            statusElem.parentElement.parentElement.querySelector('svg').innerHTML = '<path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>';
-        }
-
-        // تزریق لینک‌ها
-        const linksContainer = document.getElementById('linksContainer');
-        mockData.links.forEach(item => {
-            linksContainer.innerHTML += `
-                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                    <span class="text-sm font-medium text-gray-700 truncate w-2/3" dir="ltr">${item.name}</span>
-                    <button onclick="navigator.clipboard.writeText('${item.link}'); alert('لینک کپی شد!');" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-blue-600 px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm">
-                        کپی
-                    </button>
-                </div>
-            `;
-        });
+        // فعلاً دیتای ثابت برای تست طراحی
+        // بعدا این قسمت رو به دیتای واقعی متصل می‌کنیم
     </script>
 </body>
 </html>
