@@ -13,6 +13,7 @@
 <body class="p-4 md:p-8">
     
     <div class="max-w-4xl mx-auto space-y-6">
+        <!-- هدر لوگو -->
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">H</div>
             <div>
@@ -21,50 +22,77 @@
             </div>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col md:flex-row justify-between items-start gap-8">
-            <div class="flex-1">
-                <div class="text-green-600 font-bold mb-4 flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
-                    فعال
-                </div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-8" id="expireDays">24 روز</h2>
+        <!-- باکس اصلی و یکپارچه -->
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                 
-                <div class="space-y-3 text-gray-700 text-sm">
-                    <div class="flex justify-between w-64"><span>حجم سرویس</span> <span class="font-bold">10.00 GB</span></div>
-                    <div class="flex justify-between w-64"><span>حجم مصرفی</span> <span class="font-bold">4.74 GB</span></div>
-                    <div class="flex justify-between w-64 text-green-600 font-bold"><span>حجم باقی مانده</span> <span id="remainingTraffic">5.26 GB</span></div>
+                <!-- بخش وضعیت و روزها -->
+                <div class="flex items-center gap-6">
+                    <!-- نمودار دایره‌ای -->
+                    <div class="relative w-24 h-24">
+                        <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                            <path class="text-gray-100" stroke-width="4" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="text-green-500" stroke-width="4" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="text-xl font-bold">47%</span>
+                        </div>
+                    </div>
+
+                    <!-- متن‌ها -->
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2 text-green-600 font-bold">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            وضعیت اکانت: فعال
+                        </div>
+                        <div class="text-gray-600 font-medium">منقضی می‌شود در: <span class="text-gray-900 font-bold">24 روز</span></div>
+                    </div>
+                </div>
+
+                <!-- مشخصات ترافیک -->
+                <div class="space-y-2 text-sm border-r pr-6 border-gray-100">
+                    <div class="flex justify-between w-48"><span>حجم سرویس:</span> <span class="font-bold">10.00 GB</span></div>
+                    <div class="flex justify-between w-48"><span>حجم مصرفی:</span> <span class="font-bold">4.74 GB</span></div>
+                    <div class="flex justify-between w-48 text-green-600 font-bold"><span>باقی مانده:</span> <span>5.26 GB</span></div>
                 </div>
             </div>
 
-            <div class="relative w-32 h-32 flex-shrink-0">
-                <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                    <path class="text-gray-100" stroke-width="3" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path class="text-green-500" stroke-width="3" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold text-gray-900">47%</span>
-                    <span class="text-[10px] text-gray-500">مصرف شده</span>
+            <!-- بخش جدید: تاریخ‌ها با آیکون -->
+            <div class="mt-8 pt-6 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex items-center gap-3 text-gray-600">
+                    <span class="text-xl">📅</span>
+                    <div>
+                        <p class="text-[10px] text-gray-400">تاریخ انقضا</p>
+                        <p class="font-bold text-gray-900">1405/04/20, 17:03</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 text-gray-600">
+                    <span class="text-xl">🕒</span>
+                    <div>
+                        <p class="text-[10px] text-gray-400">آخرین اتصال</p>
+                        <p class="font-bold text-gray-900">1405/03/27, 00:17</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+        <!-- لینک‌ها -->
+        <div id="linksContainer" class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
             <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">🔗 لینک‌های اتصال</h3>
-            <div id="linksContainer" class="flex flex-col gap-3"></div>
+            <div id="linksBox" class="flex flex-col gap-3"></div>
         </div>
     </div>
 
     <script>
-        // دیتای تستی که جایگزینش می‌کنی
+        // تزریق لینک‌ها
         const links = [
             { name: "VLESS - همراه اول", link: "vless://..." },
             { name: "VMESS - ایرانسل", link: "vmess://..." }
         ];
-
-        const linksContainer = document.getElementById('linksContainer');
+        const container = document.getElementById('linksBox');
         links.forEach(item => {
-            linksContainer.innerHTML += `
-                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+            container.innerHTML += `
+                <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
                     <span class="text-sm font-medium text-gray-700 truncate w-2/3" dir="ltr">${item.name}</span>
                     <button onclick="navigator.clipboard.writeText('${item.link}'); alert('کپی شد!');" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm">
                         کپی
