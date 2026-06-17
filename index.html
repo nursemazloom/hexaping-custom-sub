@@ -12,64 +12,66 @@
 </head>
 <body class="p-4 md:p-8">
     
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- ستون سمت چپ: ۳ کارت مجزا -->
-        <div class="md:col-span-1 space-y-4">
-            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                <p class="text-sm text-gray-500 mb-1">حجم کل</p>
-                <h2 class="text-3xl font-bold" id="totalTraffic">4.74 GB</h2>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                <p class="text-sm text-gray-500 mb-1">تاریخ انقضا</p>
-                <h2 class="text-xl font-bold" id="expireDate">1405/04/20, 17:03</h2>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-                <p class="text-sm text-gray-500 mb-1">آخرین اتصال</p>
-                <h2 class="text-xl font-bold" id="lastConnection">1405/03/27, 00:17</h2>
+    <div class="max-w-4xl mx-auto space-y-6">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">H</div>
+            <div>
+                <h1 class="text-xl font-bold text-gray-900">HexaPing</h1>
+                <p class="text-xs text-gray-500">پنل کاربری اشتراک شما</p>
             </div>
         </div>
 
-        <!-- ستون سمت راست: باکس بزرگ -->
-        <div class="md:col-span-2 bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
-            <div class="flex justify-between items-start">
-                <div>
-                    <p class="text-gray-500 mb-1">منقضی می‌شود در</p>
-                    <h1 class="text-4xl font-bold text-gray-900 mb-8">24 روز</h1>
-                    
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex justify-between w-64"><span>حجم سرویس</span> <span class="font-bold">10.00 GB</span></div>
-                        <div class="flex justify-between w-64"><span>حجم مصرفی</span> <span class="font-bold">4.74 GB</span></div>
-                        <div class="flex justify-between w-64 text-green-600 font-bold"><span>حجم باقی مانده</span> <span>5.26 GB</span></div>
-                    </div>
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="flex-1">
+                <div class="text-green-600 font-bold mb-4 flex items-center gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                    فعال
                 </div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-8" id="expireDays">24 روز</h2>
+                
+                <div class="space-y-3 text-gray-700 text-sm">
+                    <div class="flex justify-between w-64"><span>حجم سرویس</span> <span class="font-bold">10.00 GB</span></div>
+                    <div class="flex justify-between w-64"><span>حجم مصرفی</span> <span class="font-bold">4.74 GB</span></div>
+                    <div class="flex justify-between w-64 text-green-600 font-bold"><span>حجم باقی مانده</span> <span id="remainingTraffic">5.26 GB</span></div>
+                </div>
+            </div>
 
-                <!-- نمودار دایره‌ای (با SVG ساده) -->
-                <div class="relative w-32 h-32">
-                    <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                        <path class="text-gray-100" stroke-width="3" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="text-green-500" stroke-width="3" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    </svg>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <span class="text-2xl font-bold">47%</span>
-                        <span class="text-[10px] text-gray-500">مصرف شده</span>
-                    </div>
+            <div class="relative w-32 h-32 flex-shrink-0">
+                <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                    <path class="text-gray-100" stroke-width="3" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="text-green-500" stroke-width="3" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-bold text-gray-900">47%</span>
+                    <span class="text-[10px] text-gray-500">مصرف شده</span>
                 </div>
             </div>
-            
-            <div class="mt-8 flex items-center gap-2 text-green-600 font-bold bg-green-50 p-3 rounded-lg w-fit">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                فعال
-            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">🔗 لینک‌های اتصال</h3>
+            <div id="linksContainer" class="flex flex-col gap-3"></div>
         </div>
     </div>
 
-    <!-- جای لینک‌ها که بعدا اضافه می‌کنیم -->
-    <div id="linksContainer" class="max-w-4xl mx-auto mt-6"></div>
-
     <script>
-        // فعلاً دیتای ثابت برای تست طراحی
-        // بعدا این قسمت رو به دیتای واقعی متصل می‌کنیم
+        // دیتای تستی که جایگزینش می‌کنی
+        const links = [
+            { name: "VLESS - همراه اول", link: "vless://..." },
+            { name: "VMESS - ایرانسل", link: "vmess://..." }
+        ];
+
+        const linksContainer = document.getElementById('linksContainer');
+        links.forEach(item => {
+            linksContainer.innerHTML += `
+                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                    <span class="text-sm font-medium text-gray-700 truncate w-2/3" dir="ltr">${item.name}</span>
+                    <button onclick="navigator.clipboard.writeText('${item.link}'); alert('کپی شد!');" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm">
+                        کپی
+                    </button>
+                </div>
+            `;
+        });
     </script>
 </body>
 </html>
