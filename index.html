@@ -22,60 +22,92 @@
         </div>
 
         <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
-             <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                
                 <div class="flex flex-col items-center gap-4">
-                    <div class="relative w-28 h-28"><svg class="w-full h-full -rotate-90" viewBox="0 0 36 36"><path class="text-gray-100" stroke-width="4" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><path class="text-green-500" stroke-width="4" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-xl font-bold">47%</span></div></div>
-                    <div class="flex items-center gap-2 text-green-600 font-bold"><span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>فعال</div>
+                    <div class="relative w-40 h-40"> <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                            <path class="text-gray-100" stroke-width="4" fill="none" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="text-green-500" stroke-width="4" stroke-dasharray="47, 100" fill="none" stroke-linecap="round" stroke="currentColor" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="text-2xl font-bold">47%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-green-600 font-bold" id="statusBox">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        فعال
+                    </div>
                 </div>
+
                 <div class="flex-1 w-full grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t md:border-t-0 md:border-r md:pr-8 border-gray-100">
-                    <div><p class="text-[10px] text-gray-400">حجم کل</p><p class="font-bold text-gray-900">10.00 GB</p></div>
-                    <div><p class="text-[10px] text-gray-400">مصرف شده</p><p class="font-bold text-gray-900">4.74 GB</p></div>
-                    <div><p class="text-[10px] text-gray-400">باقی‌مانده</p><p class="font-bold text-green-600">5.26 GB</p></div>
-                    <div><p class="text-[10px] text-gray-400">تاریخ انقضا</p><p class="font-bold text-gray-900">1405/04/20</p></div>
-                    <div><p class="text-[10px] text-gray-400">روزهای باقی‌مانده</p><p class="font-bold text-gray-900">24 روز</p></div>
-                    <div><p class="text-[10px] text-gray-400">آخرین اتصال</p><p class="font-bold text-gray-900">1405/03/27</p></div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">📦</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">حجم کل</p>
+                            <p class="font-bold text-gray-900" id="totalTraffic">10.00 GB</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">📊</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">مصرف شده</p>
+                            <p class="font-bold text-gray-900" id="usedBox">4.74 GB</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">🔋</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">باقی‌مانده</p>
+                            <p class="font-bold text-green-600" id="remainingBox">5.26 GB</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">📅</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">تاریخ انقضا</p>
+                            <p class="font-bold text-gray-900" id="expireDate">1405/04/20</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">⌛</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">روزهای باقی‌مانده</p>
+                            <p class="font-bold text-gray-900" id="expireDays">24 روز</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">🕒</span>
+                        <div>
+                            <p class="text-[10px] text-gray-400">آخرین اتصال</p>
+                            <p class="font-bold text-gray-900" id="lastConnection">1405/03/27</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="appsContainer" class="space-y-4"></div>
+        <div id="linksContainer" class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">🔗 لینک‌های اتصال</h3>
+            <div id="linksBox" class="flex flex-col gap-3"></div>
+        </div>
     </div>
 
     <script>
-        // در سرور واقعی، این خط زیر را با دیتای پنل جایگزین کن:
-        // const appsData = {{ apps | tojson | safe }};
-        const appsData = [
-            { platform: "Android", name: "Hiddify", download_links: [{name: "Direct", url: "#"}] },
-            { platform: "iOS", name: "V2Box", download_links: [{name: "AppStore", url: "#"}] }
+        // دیتای تستی
+        const links = [
+            { name: "VLESS - همراه اول", link: "vless://..." },
+            { name: "VMESS - ایرانسل", link: "vmess://..." }
         ];
-
-        const appsContainer = document.getElementById('appsContainer');
-        
-        // گروه‌بندی برنامه‌ها بر اساس پلتفرم
-        const groupedApps = appsData.reduce((acc, app) => {
-            if (!acc[app.platform]) acc[app.platform] = [];
-            acc[app.platform].push(app);
-            return acc;
-        }, {});
-
-        Object.keys(groupedApps).forEach(platform => {
-            const platformSection = document.createElement('div');
-            platformSection.className = "bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm";
-            
-            platformSection.innerHTML = `
-                <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full flex justify-between items-center p-4 bg-gray-50 font-bold text-gray-800">
-                    ${platform} <span>▼</span>
-                </button>
-                <div class="hidden p-4 space-y-3">
-                    ${groupedApps[platform].map(app => `
-                        <div class="flex justify-between items-center p-2 border-b last:border-0">
-                            <span>${app.name}</span>
-                            <a href="${app.download_links[0].url}" class="text-blue-600 text-sm hover:underline">دانلود</a>
-                        </div>
-                    `).join('')}
+        const container = document.getElementById('linksBox');
+        links.forEach(item => {
+            container.innerHTML += `
+                <div class="flex items-center justify-between p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+                    <span class="text-sm font-medium text-gray-700 truncate w-2/3" dir="ltr">${item.name}</span>
+                    <button onclick="navigator.clipboard.writeText('${item.link}'); alert('کپی شد!');" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm">
+                        کپی
+                    </button>
                 </div>
             `;
-            appsContainer.appendChild(platformSection);
         });
     </script>
 </body>
